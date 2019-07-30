@@ -58,14 +58,14 @@ public class StackWithLogWrapper implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Method m = findMethod(delegate.getClass(), method);
         if (m != null) {
-            System.out.println(String.format("start %s",method.getName()));
+            System.out.println("start "+method.getName());
             try{
                 return m.invoke(delegate, args);
             }catch (InvocationTargetException e){
                 //https://stackoverflow.com/questions/10214525/re-throw-an-invocationtargetexception-target-exception
                 throw (Exception)e.getCause();
             }finally {
-                System.out.println(String.format("end %s",method.getName()));
+                System.out.println("end "+method.getName());
             }
         }
         return null;

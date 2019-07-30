@@ -43,21 +43,22 @@ public class SessionWatermelon {
         for (int i=0;i<buyNum.length;i++) {
             try{
                 sale=SessionWatermelon.sell0(buyNum[i]);
-            }catch (Exception e){
+            } catch (IllegalArgumentException e){ // 异常具体化原则
                 sale=0;
             }
             sales[i]=sale;
             total+=sale;
         }
-        System.out.println(String.format("JZ总共卖出去%d个。",total));
+        System.out.println("JZ总共卖出去"+total+"个。");
         return sales;
     }
 
-    private static int sell0 (int buyNum) throws Exception{
-        if(buyNum>50){
+    private static int sell0 (int buyNum) throws IllegalArgumentException{
+        //fail fast principle
+        if(buyNum<0){
+            throw new IllegalArgumentException("购买个数为负数");
+        }else if (buyNum>50){
             return 50;
-        }else if(buyNum<0){
-            throw new Exception("购买个数为负数");
         }else{
             return buyNum;
         }

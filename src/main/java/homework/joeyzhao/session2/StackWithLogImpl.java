@@ -3,7 +3,7 @@ package homework.joeyzhao.session2;
 public class StackWithLogImpl extends StackImpl{
 
     private void printState(String state, String methodName) {
-        System.out.println(String.format("%s %s",state,methodName));
+        System.out.println(state+" "+methodName);
     }
 
 

@@ -13,23 +13,23 @@ public class StackImplTest {
         s.push(1);
         s.push(2);
         int pop1=s.pop();
-        System.out.println(String.format("Popped : %d",pop1));
-        System.out.println(String.format("Now the peak is: %d",s.peak()));
+        System.out.println("Popped : "+pop1);
+        System.out.println("Now the peak is: "+s.peak());
         s.pop();
         try{
             System.out.println(s.peak());
         }catch (Exception e){
-            System.out.println(String.format("Peak() got Exception: %s",e.getMessage()));
+            System.out.println("Peak() got Exception: "+e.getMessage());
         }
         try{
             System.out.println(s.pop());
         }catch (Exception e){
-            System.out.println(String.format("Pop() got Exception: %s",e.getMessage()));
+            System.out.println("Pop() got Exception: "+e.getMessage());
         }
         s.push(1);
         s.push(2);
         s.push(3);
         s.push(4);
-        System.out.print(String.format("Now the size is %d",s.size()));
+        System.out.print("Now the size is "+s.size());
     }
 }
