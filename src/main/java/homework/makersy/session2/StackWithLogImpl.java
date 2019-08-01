@@ -2,9 +2,7 @@ package homework.makersy.session2;
 
 import org.junit.Test;
 
-import java.util.EmptyStackException;
-
-/*
+/**
 StackWithLogImpl 实现一个栈，继承StackImpl，并在处理前后打出日志，目的为理解继承这个概念。
  */
 public class StackWithLogImpl extends StackImpl{

@@ -35,4 +35,13 @@ public interface StringInterface {
 
 
 
+	/**
+	 * 首尾翻转字符串，要求只能占用 O(1) 的额外空间
+	 * @return
+	 */
+	StringInterface reverse();
+
+
+
+
 }

@@ -9,10 +9,11 @@ public class demo extends com.bigbanana.lab.lab1.CalculateSum{
 
 
 	@Override
-	public  long sum(Integer... numbers){
+	public long sum(Integer... numbers){
 
-		if( numbers==null || numbers.length==0 ) return 0L;
-		else {
+		if( numbers==null || numbers.length==0 ) {
+			return 0L;
+		} else {
 			return Arrays.stream(numbers)
 					.filter(Objects::nonNull)
 					.map(Integer::longValue)

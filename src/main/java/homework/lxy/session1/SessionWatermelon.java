@@ -1,4 +1,4 @@
-package homework.lxy;
+package homework.lxy.session1;
 
 import java.util.Random;
 

@@ -35,7 +35,7 @@
    
 5、使用 reduce 计算一下，最终这批西瓜总计有多少个，并打印出来
    
-详细需要实现的内容请参照 WatermelonPipline.java
+详细需要实现的内容请参照 WatermelonPipeline.java
 
 
 

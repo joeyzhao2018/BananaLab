@@ -1,6 +1,6 @@
 package homework.woods.constants;
 
-public class WaterMelonConsts {
+public class WoodsConstants {
     /**
      * 单客最大售卖数量
      */

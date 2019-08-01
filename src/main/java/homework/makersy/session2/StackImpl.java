@@ -5,8 +5,8 @@ import org.junit.Test;
 
 import java.util.EmptyStackException;
 
-/*
-StackImpl 实现 Stack 为实现一个栈，要求存储的结构为 int[] 数组，目的为理解封装这个概念。
+/**
+ * StackImpl 实现 Stack 为实现一个栈，要求存储的结构为 int[] 数组，目的为理解封装这个概念。
  */
 public class StackImpl implements Stack{
 

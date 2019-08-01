@@ -1,3 +1,4 @@
+package homework.tonemy.session2;
 
 public class StackWithLogImpl extends StackImpl {
 

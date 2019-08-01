@@ -1,10 +1,12 @@
-﻿import java.util.Arrays;
+package homework.tonemy.session2;
+import java.util.Arrays;
+import homework.tonemy.session2.Stack;
 import java.util.function.IntPredicate;
-
 public class StackImpl implements Stack {
-	int maxSize = 5;
-	int[] arr = new int[maxSize];
-	int cur = -1; 
+	private int maxSize = 5;
+	private int[] arr = new int[maxSize];
+	private int cur = -1;
+
 	@Override
 	public boolean push(int value) {
 		// TODO Auto-generated method stub

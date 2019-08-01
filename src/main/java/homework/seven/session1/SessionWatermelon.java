@@ -63,7 +63,7 @@ public class SessionWatermelon {
       current = buyNum[i];
       try {
         sellNumber = sell0(current);
-      } catch (Exception e) {
+      } catch (IllegalArgumentException e) {
         sellNumber = 0;
       }
 
@@ -81,13 +81,15 @@ public class SessionWatermelon {
    * 单次售卖逻辑
    * @param buyNum 客户购买数量
    * @return 卖家售卖数量
-   * @throws Exception 交易数量不合法异常
+   * @throws IllegalArgumentException 交易数量不合法异常
    */
-  private static int sell0(int buyNum) throws Exception {
+  private static int sell0(int buyNum) throws IllegalArgumentException {
     if (buyNum > MAX_SELL_PER) {
       return MAX_SELL_PER;
-    } else if (buyNum < 0) {
-      throw new Exception("交易数量不合法:" + buyNum);
+    }
+
+    if (buyNum < 0) {
+      throw new IllegalArgumentException("交易数量不合法:" + buyNum);
     }
 
     return buyNum;

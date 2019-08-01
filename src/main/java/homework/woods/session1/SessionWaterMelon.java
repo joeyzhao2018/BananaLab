@@ -1,7 +1,10 @@
 package homework.woods.session1;
 
-import homework.woods.constants.WaterMelonConsts;
-import homework.woods.exception.BizParamException;
+import homework.woods.constants.WoodsConstants;
+import homework.woods.exception.BizServiceException;
+import homework.woods.utils.WoodsPrinter;
+
+import java.util.Arrays;
 
 /**
  * 西瓜摊
@@ -25,23 +28,27 @@ public class SessionWaterMelon {
 
     public static void main(String[] args) {
         // test Q1, Q7
-        System.out.println("test 1 start ......");
         int[] test1 = {};
-        System.out.print("this batch demand :");
-        arrayPrinter(test1);
-        sell(test1);
-        System.out.println("test 1 end ......");
-        System.out.println();
-        System.out.println();
-
+        test(test1);
         // test Q2, Q3, Q4, Q5, Q6, Q7
-        System.out.println("test 2 start ......");
-        int[] test2 = {1,2,3,0,2, 55};
-        System.out.print("this batch demand :");
-        arrayPrinter(test2);
-        sell(test2);
-        System.out.println("test 2 end ......");
+        int[] test2 = {-1,0,3,55};
+        test(test2);
 
+    }
+
+    public static void test(int[] demandArray)
+    {
+        WoodsPrinter.print("demand:");
+        WoodsPrinter.printArray(demandArray);
+        int[] deal = sell(demandArray);
+        WoodsPrinter.print("deal:");
+        WoodsPrinter.printArray(deal);
+        if (deal == null)
+        {
+            WoodsPrinter.println("woods这波卖出0个西瓜");
+        }else {
+            WoodsPrinter.println("woods这波卖出" + Arrays.stream(deal).sum() + "个西瓜");
+        }
     }
 
 
@@ -55,21 +62,22 @@ public class SessionWaterMelon {
         // 如果没顾客，那就不卖
         if (buyNum == null || buyNum.length == 0)
         {
-            System.out.println("不卖");
+            return null;
         }
+        int[] dealNum = new int[buyNum.length];
 
         // 来了N个顾客，要按顺序卖
         for (int i = 0; i < buyNum.length; i++)
         {
             try {
-                batchSum += sell0(buyNum[i]);
-            }catch (BizParamException bpe)
+                dealNum[i] = sell0(buyNum[i]);
+                batchSum += dealNum[i];
+            }catch (BizServiceException bpe)
             {
-                System.out.println("不卖");
+                dealNum[i] = 0;
             }
         }
-        System.out.println("这波总共卖出去" + batchSum +"个");
-        return null;
+        return dealNum;
     }
 
     /**
@@ -77,39 +85,18 @@ public class SessionWaterMelon {
      * @param buyNum
      * @return
      */
-    private static int sell0(int buyNum) throws BizParamException{
+    private static int sell0(int buyNum) throws BizServiceException {
         if (buyNum <= 0)
         {
             // 如果需求小于0个，抛出异常
-            throw new BizParamException("参数错误：buyNum = " + buyNum);
+            throw new BizServiceException("参数错误：buyNum = " + buyNum);
         }
         // 如果超过50个，只卖50个。
-        if (buyNum > WaterMelonConsts.MAX_SELL_NUM_SINGLE_CUSTOM)
+        if (buyNum > WoodsConstants.MAX_SELL_NUM_SINGLE_CUSTOM)
         {
-            buyNum = WaterMelonConsts.MAX_SELL_NUM_SINGLE_CUSTOM;
-            System.out.println("一个人一次只能买<" + WaterMelonConsts.MAX_SELL_NUM_SINGLE_CUSTOM + ">个， 怕你拎不回家。");
+            buyNum = WoodsConstants.MAX_SELL_NUM_SINGLE_CUSTOM;
         }
-        System.out.println("卖了 <"+ buyNum +">个西瓜。");
         return buyNum;
-    }
-
-    /**
-     * 数组打印
-     * @param array
-     */
-    public static void arrayPrinter(int[] array)
-    {
-        String printLine = "[";
-        for (int num = 0; num < array.length; num ++)
-        {
-            if (num != 0) {
-                printLine += "," + array[num];
-            }else {
-                printLine += array[num];
-            }
-        }
-        printLine += "]";
-        System.out.println(printLine);
     }
 
 }

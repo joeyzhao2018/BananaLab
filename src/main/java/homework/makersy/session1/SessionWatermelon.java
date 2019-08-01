@@ -1,9 +1,9 @@
 package homework.makersy.session1;
 
 /**
- * Created by makersy on 2019
+  Created by makersy on 2019
  */
-/*
+/**
 逻辑：
 
 1、如果没顾客，那就不卖

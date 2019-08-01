@@ -1,3 +1,4 @@
+package homework.tonemy.session1;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.function.IntPredicate;
  * 5. 如果需求小于0个，sell0抛出异常，在sell捕获异常并登记为不卖（卖0）
  * 6. 在控制台打印出最终这批卖出去多少个，术语：xxx总共卖出去N个
  * 7. 实现自己的打印数组函数，格式：[1,2,3,4,5]
- * 
+ *
  * @Author: Tonemy
  * @Date : 2019.7.14
  * 测试数据：
@@ -23,8 +24,8 @@ import java.util.function.IntPredicate;
  *		-1
  *		空
  */
-public	class SessionWatermelon	{ 
-	public	static void	main(String[]	args) throws IOException	{    
+public	class SessionWatermelon	{
+	public	static void	main(String[]	args) throws IOException	{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 		String line = reader.readLine().trim();
@@ -36,13 +37,13 @@ public	class SessionWatermelon	{
 		int[] buyNum = new int[len];
 		for(int i = 0; i < buyNum.length; i ++) {
 			buyNum[i] = Integer.parseInt(data[i]);
-		} 
+		}
 		int[] res = sell(buyNum);
 		System.out.println("售出记录:"+printArrays(res));
 		reader.close();
 		writer.close();
-	}    
-	public	static	int[]	sell(int[]	buyNum){  
+	}
+	public	static	int[]	sell(int[]	buyNum){
 		int sum = 0;
 		if(buyNum.length <= 0) {
 			System.out.println("共卖出去"+sum+"个");
@@ -52,7 +53,7 @@ public	class SessionWatermelon	{
 		for(int i = 0; i < buyNum.length; i ++) {
 			int s = 0;
 			try {
-				 s = sell0(buyNum[i]);
+				s = sell0(buyNum[i]);
 			} catch (NegativeException e) {
 				System.out.println(e);
 			} finally {
@@ -64,14 +65,14 @@ public	class SessionWatermelon	{
 			}
 		}
 		System.out.println("共卖出去"+sum+"个");
-		return	num;     
-	}    
+		return	num;
+	}
 	private static	int sell0(int	buyNum) throws NegativeException {
 		if(buyNum < 0) {
 			throw new NegativeException("卖出0!");
 		}
-		return	buyNum;       
-	}    
+		return	buyNum;
+	}
 	private static String printArrays(int[] arr) {
 		if(arr.length <= 0) {
 			return "[]";
@@ -93,5 +94,6 @@ class  NegativeException extends RuntimeException {
 		// TODO Auto-generated constructor stub
 	}
 }
+
 
  
